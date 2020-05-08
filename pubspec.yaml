@@ -1,0 +1,30 @@
+name: covid19india
+description: A new Flutter project.
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  google_fonts: ^1.0.0
+  http: ^0.12.1
+  connectivity: ^0.4.8+5
+  fluttertoast: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  
+  fonts:
+  - family: Lato
+    fonts:
+    - asset: fonts/Lato-Regular.ttf
+
