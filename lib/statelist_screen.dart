@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+
 import 'reusable_card.dart';
 
 class StateListScreen extends StatefulWidget {
 
-  StateListScreen({this.data});
+  StateListScreen({this.data,this.districtData});
   final data;
+  final districtData;
 
   @override
   _StateListScreenState createState() => _StateListScreenState();
@@ -13,25 +16,27 @@ class StateListScreen extends StatefulWidget {
 class _StateListScreenState extends State<StateListScreen> {
 
   var myData;
+  var myDistrictData;
+  var state;
   int count = 0;
 
-  void setData(data){
+  void setData(data,districtData){
     setState(() {
       myData = data;
+      myDistrictData = districtData;
     });
   }
 
   void initState(){
     super.initState();
-    setData(widget.data);
+    setData(widget.data,widget.districtData);
     counter(myData);
   }
 
   void counter(myData){
-    for(var state in myData['statewise']){
+    for(state in myData['statewise']){
       count++;
     }
-    print(count);
   }
 
   @override
@@ -39,20 +44,18 @@ class _StateListScreenState extends State<StateListScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF161625),
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Color(0xFF161625),
-                  ),
-                child: ListView.builder(
-                  itemCount: count-1,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    return ReusableCard(
+        child: AnimationLimiter(
+          child: ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            itemCount: count-1,
+            itemBuilder: (BuildContext context, int index) {
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 700),
+                child: SlideAnimation(
+                  verticalOffset: 44.0,
+                  child: FadeInAnimation(
+                    child: ReusableCard(
                       width: 195,
                       margin: EdgeInsets.only(top:20),
                       alignment: Alignment.center,
@@ -208,13 +211,13 @@ class _StateListScreenState extends State<StateListScreen> {
                           ],
                         ),
                       )
-                    );
-                  },
+                    )
+                  ),
                 ),
-              ),
-            )
-          ],
-        )
+              );
+            },
+          ),
+        ),
       ),
     );
   }

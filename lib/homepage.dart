@@ -5,8 +5,9 @@ import 'statelist_screen.dart';
 
 class MyHomePage extends StatefulWidget {
 
-  MyHomePage({this.data});
+  MyHomePage({this.data,this.districtData});
   final data;
+  final districtData;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -23,10 +24,12 @@ class _MyHomePageState extends State<MyHomePage> {
   String deltaDeath = "";
   String deltaRecovered = "";
   var myData;
+  var myDistrictData;
 
-  void updateUI(data)async{
+  void updateUI(data,districtData)async{
     setState(() {
       myData = data;
+      myDistrictData = districtData;
       totalConfirmed = data['statewise'][0]['confirmed'];
       totalActive = data['statewise'][0]['active'];
       totalRecovered = data['statewise'][0]['recovered'];
@@ -40,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
-    updateUI(widget.data);
+    updateUI(widget.data,widget.districtData);
   }
 
   @override
@@ -293,7 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       onPress: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return StateListScreen(data: myData);
+                          return StateListScreen(data: myData , districtData: myDistrictData);
                         }));
                       },
                     )
@@ -366,7 +369,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      onPress: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return StateListScreen(data: myData,districtData: myDistrictData);
+                        }));
+                      },
                     );
                   },
                 ),

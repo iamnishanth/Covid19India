@@ -12,6 +12,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   NetworkHandler networkHandler = NetworkHandler();
   var data;
+  var districtData;
   void setData()async{
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -27,7 +28,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
       return;
     }
     data = await networkHandler.getData();
-    if(data == int){
+    districtData = await networkHandler.getDistrictData();
+    if(data == int || districtData == int){
       Fluttertoast.showToast(
           msg: "There was an error connecting to the server",
           toastLength: Toast.LENGTH_LONG,
@@ -40,7 +42,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       return;
     }
     Navigator.push(context, MaterialPageRoute(builder: (context){
-      return MyHomePage(data: data);
+      return MyHomePage(data: data,districtData: districtData);
     }));
   }
    void initState(){
