@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'reusable_card.dart';
 import 'network.dart';
 import 'statelist_screen.dart';
+import 'statescreen.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -50,6 +51,41 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF161625),
+      appBar: AppBar(
+        title: Row(
+          children: <Widget>[
+            Text(
+              "COVID19",
+              style: TextStyle(
+                fontFamily: 'Lato',
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.white70
+              )
+            ),
+            SizedBox(width: 5),
+            Text(
+              "INDIA",
+              style: TextStyle(
+                fontFamily: 'Lato',
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFEB1555),
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Color(0xFF1D1E33),
+        leading: GestureDetector(
+          child: Icon(
+            Icons.menu,
+            color: Colors.white70,
+          ),
+          onTap: (){
+            print("Hello");
+          },
+        ),
+      ),
       body: SafeArea(
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -70,7 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                onPress: (){},
+                onPress: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return StateScreen();
+                  }));
+                },
               ),
             ),
             Expanded(
@@ -88,13 +128,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children:<Widget>[
                                   SizedBox(height: 15),
-                                  Text(
-                                    "CONFIRMED",
-                                    style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFFFE0739)
+                                  FittedBox(
+                                    child: Text(
+                                      "CONFIRMED",
+                                      style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFFFE0739)
+                                      ),
                                     ),
                                   ),
                                   SizedBox(height: 10),
@@ -132,14 +174,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children:<Widget>[
                                   SizedBox(height: 15),
-                                  Text(
-                                    "RECOVERED",
-                                    style:TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF27A644)
-                                    ), 
+                                  FittedBox(
+                                    child: Text(
+                                      "RECOVERED",
+                                      style:TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF27A644)
+                                      ), 
+                                    ),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
@@ -181,14 +225,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children:<Widget>[
                                   SizedBox(height: 15),
-                                  Text(
-                                    "ACTIVE",
-                                    style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF007AFE)
-                                    ), 
+                                  FittedBox(
+                                    child: Text(
+                                      "ACTIVE",
+                                      style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF007AFE)
+                                      ), 
+                                    ),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
@@ -224,24 +270,28 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children:<Widget>[
                                   SizedBox(height: 15),
-                                  Text(
-                                    "DEATHS",
-                                    style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF6B747C)
-                                    ), 
+                                  FittedBox(
+                                    child: Text(
+                                      "DEATHS",
+                                      style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF6B747C)
+                                      ), 
+                                    ),
                                   ),
                                   SizedBox(height: 10),
-                                  Text(
-                                    "[+$deltaDeath]",
-                                    style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF6B747C)
-                                    ), 
+                                  FittedBox(
+                                    child: Text(
+                                      "[+$deltaDeath]",
+                                      style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF6B747C)
+                                      ), 
+                                    ),
                                   ),
                                   FittedBox(
                                     child: Text(
