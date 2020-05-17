@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'reusable_card.dart';
-import 'network.dart';
 import 'statelist_screen.dart';
 import 'statescreen.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
 
-  MyHomePage({this.data,this.districtData});
+  MyHomePage({this.data,this.districtData,this.dailyData});
   final data;
   final districtData;
+  final dailyData;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  NetworkHandler networkHandler = NetworkHandler();
+
   int count=0;
   String totalConfirmed = "";
   String totalActive = "";
@@ -26,11 +27,14 @@ class _MyHomePageState extends State<MyHomePage> {
   String deltaRecovered = "";
   var myData;
   var myDistrictData;
+  var myDailyData;
+  var noofstate;
 
-  void updateUI(data,districtData)async{
+  void updateUI(data,districtData,dailyData)async{
     setState(() {
       myData = data;
       myDistrictData = districtData;
+      myDailyData = dailyData;
       totalConfirmed = data['statewise'][0]['confirmed'];
       totalActive = data['statewise'][0]['active'];
       totalRecovered = data['statewise'][0]['recovered'];
@@ -44,7 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
-    updateUI(widget.data,widget.districtData);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    updateUI(widget.data,widget.districtData,widget.dailyData);
   }
 
   @override
@@ -106,11 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                onPress: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return StateScreen();
-                  }));
-                },
+                onPress: (){},
               ),
             ),
             Expanded(
@@ -130,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(height: 15),
                                   FittedBox(
                                     child: Text(
-                                      "CONFIRMED",
+                                      "Confirmed",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
                                         fontSize: 15,
@@ -176,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(height: 15),
                                   FittedBox(
                                     child: Text(
-                                      "RECOVERED",
+                                      "Recovered",
                                       style:TextStyle(
                                         fontFamily: 'Lato',
                                         fontSize: 15,
@@ -227,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(height: 15),
                                   FittedBox(
                                     child: Text(
-                                      "ACTIVE",
+                                      "Active",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
                                         fontSize: 15,
@@ -272,7 +273,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(height: 15),
                                   FittedBox(
                                     child: Text(
-                                      "DEATHS",
+                                      "Deaths",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
                                         fontSize: 15,
@@ -346,7 +347,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       onPress: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return StateListScreen(data: myData , districtData: myDistrictData);
+                          return StateListScreen(data: myData , districtData: myDistrictData,dailyData: myDailyData);
                         }));
                       },
                     )
@@ -421,9 +422,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       onPress: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return StateListScreen(data: myData,districtData: myDistrictData);
-                        }));
+                        String stateName = myData['statewise'][index+1]['state'].toString();
+                        int indexx = index + 1;
+                        int i = 0;
+                        for(noofstate in myDistrictData){
+                          if(myDistrictData[i]['state'] == stateName){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return StateScreen(data: myData,districtData: myDistrictData,dailyData: myDailyData, stateName: stateName,index: indexx);
+                            }));
+                          }
+                          i++;
+                        }
                       },
                     );
                   },

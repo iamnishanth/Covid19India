@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'reusable_card.dart';
+import 'statescreen.dart';
 
 class StateListScreen extends StatefulWidget {
 
-  StateListScreen({this.data,this.districtData});
+  StateListScreen({this.data,this.districtData,this.dailyData});
   final data;
   final districtData;
+  final dailyData;
 
   @override
   _StateListScreenState createState() => _StateListScreenState();
@@ -17,19 +19,22 @@ class _StateListScreenState extends State<StateListScreen> {
 
   var myData;
   var myDistrictData;
+  var myDailyData;
   var state;
   int count = 0;
+  var noofstate;
 
-  void setData(data,districtData){
+  void setData(data,districtData,dailyData){
     setState(() {
       myData = data;
       myDistrictData = districtData;
+      myDailyData = dailyData;
     });
   }
 
   void initState(){
     super.initState();
-    setData(widget.data,widget.districtData);
+    setData(widget.data,widget.districtData,widget.dailyData);
     counter(myData);
   }
 
@@ -210,7 +215,20 @@ class _StateListScreenState extends State<StateListScreen> {
                             SizedBox(height:20),
                           ],
                         ),
-                      )
+                      ),
+                      onPress: (){
+                        String stateName = myData['statewise'][index+1]['state'].toString();
+                        int indexx = index + 1;
+                        int i = 0;
+                        for(noofstate in myDistrictData){
+                          if(myDistrictData[i]['state'] == stateName){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return StateScreen(data: myData, districtData: myDistrictData, dailyData: myDailyData, stateName: stateName, index: indexx);
+                            }));
+                          }
+                          i++;
+                        }
+                      },
                     )
                   ),
                 ),
