@@ -18,7 +18,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       Fluttertoast.showToast(
-          msg: "This App Requires an Internet Connection",
+          msg: "This App Requires an Internet Connection. Restart the App.",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

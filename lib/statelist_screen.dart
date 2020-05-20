@@ -62,7 +62,7 @@ class _StateListScreenState extends State<StateListScreen> {
                   child: FadeInAnimation(
                     child: ReusableCard(
                       width: 195,
-                      margin: EdgeInsets.only(top:20),
+                      margin: EdgeInsets.only(top:10),
                       alignment: Alignment.center,
                       colour: Color(0xFF1D1E33),
                       cardChild: Center(

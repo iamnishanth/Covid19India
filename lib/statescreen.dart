@@ -29,8 +29,6 @@ class _StateScreenState extends State<StateScreen> {
   var count = 0;
   var filteredData;
   var filterCounter = 0;
-  var noofstate;
-  var noofdistrict;
   var items;
   List <Widget> districtsList = [];
   List <FlSpot> spots = [];
@@ -50,9 +48,10 @@ class _StateScreenState extends State<StateScreen> {
       activeRate = ((double.parse(myData['statewise'][myIndex]['active']))/(double.parse(myData['statewise'][myIndex]['confirmed'])))*100;
       recoveryRate = ((double.parse(myData['statewise'][myIndex]['recovered']))/(double.parse(myData['statewise'][myIndex]['confirmed'])))*100;
       mortalityRate = ((double.parse(myData['statewise'][myIndex]['deaths']))/(double.parse(myData['statewise'][myIndex]['confirmed'])))*100;
-      
+      asofDate = myData['statewise'][myIndex]['lastupdatedtime'];
     });
   }
+
   void initState(){
     super.initState();
     setData(widget.data, widget.districtData, widget.dailyData, widget.stateName, widget.index);
@@ -60,11 +59,11 @@ class _StateScreenState extends State<StateScreen> {
     filteredDataCounter();
     buildDistrictList();
     chartData("Confirmed",Color(0xFFFE0739));
-    asofDate = myData['statewise'][myIndex]['lastupdatedtime'];
+    
   }
 
   void counter(myDistrictData){
-    for(noofstate in myDistrictData){
+    for(items in myDistrictData){
       setState(() {
         count++;
       });
@@ -81,7 +80,7 @@ class _StateScreenState extends State<StateScreen> {
   }
 
   void filteredDataCounter(){
-    for(noofdistrict in filteredData){
+    for(items in filteredData){
       setState(() {
         filterCounter++;
       }); 
@@ -147,8 +146,6 @@ class _StateScreenState extends State<StateScreen> {
         i++;
         j++;
       }
-      asofDate = myDailyData['states_daily'][i-1]['date'];
-
       while(spots.length>31){
         spots.removeAt(0);
       }
@@ -746,6 +743,7 @@ class _StateScreenState extends State<StateScreen> {
                     letterSpacing: .5,
                   ), 
                 ),
+                initiallyExpanded: false,
                 children: [
                   Column(
                     children: <Widget>[

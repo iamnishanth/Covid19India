@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'reusable_card.dart';
 import 'statelist_screen.dart';
 import 'statescreen.dart';
+import 'faqpage.dart';
+import 'aboutpage.dart';
 import 'package:flutter/services.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'symptoms.dart';
+import 'prevention.dart';
+import 'covidfaq.dart';
+
 
 class MyHomePage extends StatefulWidget {
 
@@ -29,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var myDistrictData;
   var myDailyData;
   var noofstate;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void updateUI(data,districtData,dailyData)async{
     setState(() {
@@ -56,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF161625),
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Row(
           children: <Widget>[
@@ -81,14 +90,100 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         backgroundColor: Color(0xFF1D1E33),
-        leading: GestureDetector(
-          child: Icon(
+        leading: IconButton(
+          icon: Icon(
             Icons.menu,
             color: Colors.white70,
           ),
-          onTap: (){
-            print("Hello");
-          },
+          onPressed: () => _scaffoldKey.currentState.openDrawer(),
+        )
+      ),
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor:  Color(0xFF161625),
+        ),
+        child: Container(
+          width: 300,
+          child: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'COVID19',
+                          style: TextStyle(
+                            fontFamily: 'Lato',
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70
+                          ),
+                        ),
+                        Text(
+                          'INDIA',
+                          style: TextStyle(
+                            fontFamily: 'Lato',
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFEB1555),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF1D1E33),
+                  ),
+                ),
+                SizedBox(height: 50),
+                ListTile(
+                  title: Text(
+                    'FAQ',
+                    style: TextStyle(
+                      fontFamily: 'Lato',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                    ),
+                  ),
+                  leading: Icon(
+                    Icons.question_answer,
+                    size: 25,
+                    color: Colors.white70,
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return FaqPage();
+                    }));
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'About',
+                    style: TextStyle(
+                      fontFamily: 'Lato',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70
+                    ),
+                  ),
+                  leading: Icon(
+                    Icons.info_outline,
+                    size: 25,
+                    color: Colors.white70,
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return AboutPage();
+                    }));
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       body: SafeArea(
@@ -97,21 +192,53 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: ReusableCard(
-                colour: Color(0xFF1D1E33),
-                margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                cardChild: Center(
-                  child: Text(
-                    "COVID19 INDIA",
-                    style: TextStyle(
-                      fontFamily: 'Lato',
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70,
-                    ),
-                  ),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  enlargeCenterPage: true,
                 ),
-                onPress: (){},
+                items: [
+                  ReusableCard(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
+                    colour: Color(0xFF1D1E33),
+                    cardChild: Center(
+                      child: Image.asset('images/symptoms.jpg')
+                    ),
+                    onPress: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return Symptoms();
+                        }));
+                    },
+                  ),
+                  ReusableCard(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
+                    colour: Color(0xFF1D1E33),
+                    cardChild: Center(
+                      child: Image.asset('images/covid19.jpg')
+                    ),
+                    onPress: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return CovidFAQPage();
+                      }));
+                    },
+                  ),
+                  ReusableCard(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
+                    colour: Color(0xFF1D1E33),
+                    cardChild: Center(
+                      child: Image.asset('images/prevention3.jpg')
+                    ),
+                    onPress: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return Prevention();
+                      }));
+                    },
+                  )
+                ]
               ),
             ),
             Expanded(
@@ -147,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       fontFamily: 'Lato',
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
-                                      color: Color(0xFFFE0739)
+                                      color: Color(0xFFFE0739).withOpacity(0.7)
                                     ),
                                   ),
                                   
@@ -193,7 +320,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       fontFamily: 'Lato',
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
-                                      color: Color(0xFF27A644)
+                                      color: Color(0xFF27A644).withOpacity(0.7)
                                     ), 
                                   ),
                                   FittedBox(
@@ -290,7 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontFamily: 'Lato',
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
-                                        color: Color(0xFF6B747C)
+                                        color: Color(0xFF6B747C).withOpacity(0.7)
                                       ), 
                                     ),
                                   ),
