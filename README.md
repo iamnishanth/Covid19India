@@ -5,6 +5,7 @@ NOTE : Every data in this app is collected from covid19india.org API.
 
 ### Download
 Link 1 : http://www.mediafire.com/file/2556fm9hbfyy1me/COVID19India.apk/file
+
 Link 2 : https://drive.google.com/open?id=1pvO2wKRIS5fLxuLiqiuq8Rld5ezSkmzQ
 
 ## Home
