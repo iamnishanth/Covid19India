@@ -6,7 +6,7 @@ NOTE : Every data in this app is collected from covid19india.org API.
 
 ### Download
 
-Link 1 (Fastest) : [Download](https://firebasestorage.googleapis.com/v0/b/covid19-india-6c4da.appspot.com/o/COVID19India.apk?alt=media&token=d9167e3d-b805-4622-b135-6df3e973a378)
+Link 1 (Fastest) : [Download](https://firebasestorage.googleapis.com/v0/b/covid19-india-6c4da.appspot.com/o/COVID19.apk?alt=media&token=5fa5bb96-504e-4c15-b375-975cb1fb0464)
 
 Link 2 : [Download](https://drive.google.com/open?id=1pvO2wKRIS5fLxuLiqiuq8Rld5ezSkmzQ)
 
