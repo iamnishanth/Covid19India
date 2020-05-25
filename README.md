@@ -8,9 +8,9 @@ NOTE : Every data in this app is collected from covid19india.org API.
 
 Link 1 (Fastest) : [Download](https://firebasestorage.googleapis.com/v0/b/covid19-india-6c4da.appspot.com/o/COVID19.apk?alt=media&token=5fa5bb96-504e-4c15-b375-975cb1fb0464)
 
-Link 2 : [Download](https://drive.google.com/open?id=1pvO2wKRIS5fLxuLiqiuq8Rld5ezSkmzQ)
+Link 2 : [Download](https://drive.google.com/open?id=1i0g5vXygjbwNVrAIC_Q9_FMD7RBlt3zB)
 
-Link 3 (Slow) : [Download](http://www.mediafire.com/file/2556fm9hbfyy1me/COVID19India.apk/file)
+Link 3 (Slow) : [Download](http://www.mediafire.com/file/mfgiik6cgfais86/COVID19.apk/file)
 
 ## Home
 <img src = "readme/homepage.gif" height = "400">
