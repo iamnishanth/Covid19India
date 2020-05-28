@@ -59,9 +59,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: SafeArea(
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 300),
               Text(
                 "COVID19",
                 style: TextStyle(
@@ -80,7 +79,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   color: Color(0xFFEB1555),
                 ),
               ),
-              SizedBox(height: 300),
+              SizedBox(height:MediaQuery.of(context).size.height*0.1),
             ],
           )
         )

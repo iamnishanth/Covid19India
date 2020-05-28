@@ -6,6 +6,7 @@ import 'faqpage.dart';
 import 'aboutpage.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'symptoms.dart';
 import 'prevention.dart';
 import 'covidfaq.dart';
@@ -103,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           canvasColor:  Color(0xFF161625),
         ),
         child: Container(
-          width: 300,
+          width: MediaQuery.of(context).size.width * 0.65,
           child: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -203,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
                     colour: Color(0xFF1D1E33),
-                    cardChild: Center(
+                    cardChild: FittedBox(
                       child: Image.asset('images/symptoms.jpg')
                     ),
                     onPress: (){
@@ -216,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
                     colour: Color(0xFF1D1E33),
-                    cardChild: Center(
+                    cardChild: FittedBox(
                       child: Image.asset('images/covid19.jpg')
                     ),
                     onPress: (){
@@ -229,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
                     colour: Color(0xFF1D1E33),
-                    cardChild: Center(
+                    cardChild: FittedBox(
                       child: Image.asset('images/prevention3.jpg')
                     ),
                     onPress: (){
@@ -251,13 +252,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: ReusableCard(
                             colour: Color(0xFF1D1E33),
+                            width: MediaQuery.of(context).size.width * 0.5,
                             margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
                             cardChild: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children:<Widget>[
-                                  SizedBox(height: 15),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       "Confirmed",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
@@ -267,8 +269,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 10),
-                                  Text(
+                                  SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                                  AutoSizeText(
                                     "[+$deltaConfirmed]",
                                     style:TextStyle(
                                       fontFamily: 'Lato',
@@ -279,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       totalConfirmed,
                                       style: TextStyle(
                                         fontFamily: 'Lato',
@@ -297,13 +299,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: ReusableCard(
                             colour: Color(0xFF1D1E33),
+                            width: MediaQuery.of(context).size.width * 0.5,
                             margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
                             cardChild: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children:<Widget>[
-                                  SizedBox(height: 15),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       "Recovered",
                                       style:TextStyle(
                                         fontFamily: 'Lato',
@@ -313,8 +316,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ), 
                                     ),
                                   ),
-                                  SizedBox(height: 10),
-                                  Text(
+                                  SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                                  AutoSizeText(
                                     "[+$deltaRecovered]",
                                     style: TextStyle(
                                       fontFamily: 'Lato',
@@ -324,7 +327,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ), 
                                   ),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       totalRecovered,
                                       style:TextStyle(
                                         fontFamily: 'Lato',
@@ -348,13 +351,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: ReusableCard(
                             colour: Color(0xFF1D1E33),
+                            width: MediaQuery.of(context).size.width * 0.5,
                             margin: EdgeInsets.fromLTRB(5, 10, 10, 5),
                             cardChild: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children:<Widget>[
-                                  SizedBox(height: 15),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       "Active",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
@@ -364,8 +368,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ), 
                                     ),
                                   ),
-                                  SizedBox(height: 10),
-                                  Text(
+                                  SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                                  AutoSizeText(
                                     "",
                                     style: TextStyle(
                                       fontFamily: 'Lato',
@@ -375,7 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ), 
                                   ),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       totalActive,
                                       style:TextStyle(
                                         fontFamily: 'Lato',
@@ -393,13 +397,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: ReusableCard(
                             colour: Color(0xFF1D1E33),
+                            width: MediaQuery.of(context).size.width * 0.5,
                             margin: EdgeInsets.fromLTRB(5, 10, 10, 5),
                             cardChild: Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children:<Widget>[
-                                  SizedBox(height: 15),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       "Deaths",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
@@ -409,9 +414,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ), 
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  SizedBox(height:MediaQuery.of(context).size.height*0.01),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       "[+$deltaDeath]",
                                       style: TextStyle(
                                         fontFamily: 'Lato',
@@ -422,7 +427,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                   FittedBox(
-                                    child: Text(
+                                    child: AutoSizeText(
                                       totalDeath,
                                         style: TextStyle(
                                         fontFamily: 'Lato',
@@ -450,7 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 cardChild: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(
+                    AutoSizeText(
                       "Top States",
                       style: TextStyle(
                         fontFamily: 'Lato',
@@ -495,16 +500,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ReusableCard(
-                      width: 195,
+                      width: MediaQuery.of(context).size.width * 0.47,
                       margin: EdgeInsets.only(right:10),
                       alignment: Alignment.center,
                       colour: Color(0xFF1D1E33),
                       cardChild: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            SizedBox(height:40),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][index+1]['state'].toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -516,9 +521,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ), 
                               ),
                             ),
-                            SizedBox(height:10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 "[+${myData['statewise'][index+1]['deltaconfirmed'].toString()}]",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -531,9 +536,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               
                             ),
-                            SizedBox(height:10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][index+1]['confirmed'].toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

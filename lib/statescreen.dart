@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'reusable_card.dart';
 import 'chart.dart';
 
@@ -342,7 +343,7 @@ class _StateScreenState extends State<StateScreen> {
                   letterSpacing: .5,
                 ), 
               ),
-              SizedBox(height:50),
+              SizedBox(height:MediaQuery.of(context).size.height*0.05),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -351,14 +352,14 @@ class _StateScreenState extends State<StateScreen> {
                     child: ReusableCard(
                       colour: Color(0xFF1D1E33),
                       margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                      height: 110,
-                      padding: EdgeInsets.all(5),
+                      height: MediaQuery.of(context).size.height * 0.14,
+                      padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                       cardChild: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children:<Widget>[
-                            SizedBox(height: 15),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 "Confirmed",
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -368,7 +369,7 @@ class _StateScreenState extends State<StateScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
                               child: Text(
                                 "[+${myData['statewise'][myIndex]['deltaconfirmed'].toString()}]",
@@ -382,7 +383,7 @@ class _StateScreenState extends State<StateScreen> {
                             ),
                             SizedBox(height: 3),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][myIndex]['confirmed'].toString(),
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -404,15 +405,15 @@ class _StateScreenState extends State<StateScreen> {
                     flex: 1,
                     child: ReusableCard(
                       colour: Color(0xFF1D1E33),
-                      height: 110,
+                      height: MediaQuery.of(context).size.height*0.14,
                       margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                       cardChild: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children:<Widget>[
-                            SizedBox(height: 15),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 "Active",
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -422,7 +423,7 @@ class _StateScreenState extends State<StateScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
                               child: Text(
                                 " ",
@@ -436,7 +437,7 @@ class _StateScreenState extends State<StateScreen> {
                             ),
                             SizedBox(height: 3),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][myIndex]['active'].toString(),
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -457,16 +458,16 @@ class _StateScreenState extends State<StateScreen> {
                   Expanded(
                     flex: 1,
                     child: ReusableCard(
-                      height: 110,
+                      height: MediaQuery.of(context).size.height * 0.14,
                       colour: Color(0xFF1D1E33),
                       margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                       cardChild: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children:<Widget>[
-                            SizedBox(height: 15),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 "Recovered",
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -476,7 +477,7 @@ class _StateScreenState extends State<StateScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
                               child: Text(
                                 "[+${myData['statewise'][myIndex]['deltarecovered'].toString()}]",
@@ -490,7 +491,7 @@ class _StateScreenState extends State<StateScreen> {
                             ),
                             SizedBox(height: 3),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][myIndex]['recovered'].toString(),
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -512,15 +513,15 @@ class _StateScreenState extends State<StateScreen> {
                     flex: 1,
                     child: ReusableCard(
                       colour: Color(0xFF1D1E33),
-                      height: 110,
+                      height: MediaQuery.of(context).size.height*0.14,
                       margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                       cardChild: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children:<Widget>[
-                            SizedBox(height: 15),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 "Deaths",
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -530,7 +531,7 @@ class _StateScreenState extends State<StateScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             FittedBox(
                               child: Text(
                                 "[+${myData['statewise'][myIndex]['deltadeaths'].toString()}]",
@@ -544,7 +545,7 @@ class _StateScreenState extends State<StateScreen> {
                             ),
                             SizedBox(height: 3),
                             FittedBox(
-                              child: Text(
+                              child: AutoSizeText(
                                 myData['statewise'][myIndex]['deaths'].toString(),
                                 style: TextStyle(
                                   fontFamily: 'Lato',
@@ -564,7 +565,7 @@ class _StateScreenState extends State<StateScreen> {
                   )
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height:MediaQuery.of(context).size.height*0.01),
               Text(
                 "Last updated on $asofDate ",
                 textAlign: TextAlign.center,
@@ -574,7 +575,7 @@ class _StateScreenState extends State<StateScreen> {
                   fontSize: 10,
                 ),
               ),
-              SizedBox(height:15),
+              SizedBox(height:MediaQuery.of(context).size.height*0.015),
               Chart(mySpots: spots,chartColor:colors),
               SizedBox(height:5),
               Text(
@@ -586,12 +587,12 @@ class _StateScreenState extends State<StateScreen> {
                   fontSize: 8,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height:MediaQuery.of(context).size.height*0.01),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      height: 200,
+                      height: MediaQuery.of(context).size.height * 0.24,
                       margin: EdgeInsets.all(5),
                       padding: EdgeInsets.all(5),
                       colour: Color(0xFF1D1E33),
@@ -607,8 +608,8 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF007AFE).withOpacity(0.5),
                               ),
                             ),
-                            SizedBox(height:10),
-                            Text(
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                            AutoSizeText(
                               "${activeRate.toStringAsFixed(1)} %",
                               style: TextStyle(
                                 fontFamily: 'Lato',
@@ -617,7 +618,7 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF007AFE),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             Text(
                               "For every 100 confirmed cases, ${activeRate.toStringAsFixed(0)} are currently infected.",
                               textAlign: TextAlign.center,
@@ -638,7 +639,7 @@ class _StateScreenState extends State<StateScreen> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      height: 200,
+                      height: MediaQuery.of(context).size.height * 0.24,
                       margin: EdgeInsets.all(5),
                       padding: EdgeInsets.all(5),
                       colour: Color(0xFF1D1E33),
@@ -654,8 +655,8 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF27A644).withOpacity(0.5),
                               ),
                             ),
-                            SizedBox(height:10),
-                            Text(
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                            AutoSizeText(
                               "${recoveryRate.toStringAsFixed(1)} %",
                               style: TextStyle(
                                 fontFamily: 'Lato',
@@ -664,7 +665,7 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF27A644),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             Text(
                               "For every 100 confirmed cases, ${recoveryRate.toStringAsFixed(0)} have recovered from the virus.",
                               textAlign: TextAlign.center,
@@ -685,7 +686,7 @@ class _StateScreenState extends State<StateScreen> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      height: 200,
+                      height: MediaQuery.of(context).size.height * 0.24,
                       margin: EdgeInsets.all(5),
                       padding: EdgeInsets.all(5),
                       colour: Color(0xFF1D1E33),
@@ -701,8 +702,8 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF6B747C).withOpacity(0.5),
                               ),
                             ),
-                            SizedBox(height:10),
-                            Text(
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                            AutoSizeText(
                               "${mortalityRate.toStringAsFixed(1)} %",
                               style: TextStyle(
                                 fontFamily: 'Lato',
@@ -711,7 +712,7 @@ class _StateScreenState extends State<StateScreen> {
                                 color: Color(0xFF6B747C),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height:MediaQuery.of(context).size.height*0.01),
                             Text(
                               "For every 100 confirmed cases, ${mortalityRate.toStringAsFixed(0)} have passed away from the virus.",
                               textAlign: TextAlign.center,
