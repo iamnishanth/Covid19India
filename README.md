@@ -2,6 +2,8 @@
 
 COVID19 India is a flutter project that tracks COVID19 Stats in India.
 
+## UPDATE Oct 2021 : This app won't work as covid19india.org API is shutting down on Oct 31st [Read more](https://blog.covid19india.org/2021/08/07/end/)
+
 NOTE : Every data in this app is collected from covid19india.org API.
 
 ### Download
